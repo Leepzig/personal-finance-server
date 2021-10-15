@@ -1,5 +1,5 @@
 class BudgetsController < ApplicationController
-    before_action :find_budget, only: [:show, :update, :delete]
+    before_action :find_budget, only: [:show, :update, :destroy]
 
     def index
         render json: Budget.all, status: :ok
@@ -24,10 +24,11 @@ class BudgetsController < ApplicationController
 
     def update
         @budget.update(budget_params)
-        render json: @budget, status: :updated
+        render json: @budget, status: :ok
     end
 
     def destroy
+        # binding.pry
         @budget.destroy
         header :not_content
     end
