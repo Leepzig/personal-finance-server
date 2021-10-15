@@ -25,4 +25,12 @@ RSpec.describe Budget, type: :model do
   it "#expenses returns an array of all transactions of the transaction_type expense" do 
     expect(@budget.expenses.length.to eq(3))
   end
+
+  it "#income_total returns a hash with total information" do
+    expect(@budget.income_total).to eq({name:"Total", budgeted:200, actual:180})
+  end
+
+  it "#expense_total returns a hash with total information" do
+    expect(@budget.expense_total).to eq({name:"Total", budgeted:300, actual:270})
+  end
 end
