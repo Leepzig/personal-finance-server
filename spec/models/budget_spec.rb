@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Budget, type: :model do
-  before :context do
+  before :all do
     @user = User.create(first_name:"bobo", last_name:"bobo", email:"bobo@bo.com", password:"123")
     @budget = @user.budgets.create(header:"test")
     @budget.transactions.create(name:"groceries", budgeted:100, actual:90, transaction_type:"expense")
@@ -23,7 +23,7 @@ RSpec.describe Budget, type: :model do
   end
 
   it "#expenses returns an array of all transactions of the transaction_type expense" do 
-    expect(@budget.expenses.length.to eq(3))
+    expect(@budget.expenses.length).to eq(3)
   end
 
   it "#income_total returns a hash with total information" do

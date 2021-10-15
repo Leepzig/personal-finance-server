@@ -7,7 +7,7 @@ RSpec.describe Transaction, type: :model do
     budget = user.budgets.create(header:"test")
     transaction = budget.transactions.create(name:"dry cleaning", budgeted:30, actual:50, transaction_type:"cheese")
     transaction1 = budget.transactions.create(name:"dry cleaning", budgeted:30, actual:50, transaction_type:"income")
-    transaction2 = budget.transactions.create(name:"dry cleaning", budgeted:30, actual:50, transaction_type:"expenses")
+    transaction2 = budget.transactions.create(name:"dry cleaning", budgeted:30, actual:50, transaction_type:"expense")
     expect(transaction).to_not be_valid
     expect(transaction1).to be_valid
     expect(transaction2).to be_valid
