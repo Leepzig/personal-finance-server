@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Budgets", type: :request do
-  describe "GET /index" do
-    # pending "add some examples (or delete) #{__FILE__}"
+  # describe "GET /index" do
+  #   it "returns a list of all budgets" do
+  #     expect(Budget.all).to eq()
   end
 end
