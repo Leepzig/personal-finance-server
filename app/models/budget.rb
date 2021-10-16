@@ -1,6 +1,6 @@
 class Budget < ApplicationRecord
   belongs_to :user
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
   def income
     self.transactions.where('transaction_type = ?', 'income')

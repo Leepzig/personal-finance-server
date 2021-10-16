@@ -1,4 +1,4 @@
-class BudgetsController < ApplicationController
+class Api::V1::BudgetsController < ApplicationController
     before_action :find_budget, only: [:show, :update, :destroy]
 
     def index
@@ -23,14 +23,21 @@ class BudgetsController < ApplicationController
     end
 
     def update
-        @budget.update(budget_params)
-        render json: @budget, status: :ok
+        if @budget
+            @budget.update(budget_params)
+            render json: @budget, status: :ok
+        else
+            render_not_found
+        end
     end
 
     def destroy
-        # binding.pry
-        @budget.destroy
-        header :not_content
+        if @budget
+            @budget.destroy
+            header :not_content
+        else
+            render_not_found
+        end
     end
 
     private
