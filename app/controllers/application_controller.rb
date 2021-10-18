@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
     before_action :authorized
-    jwt_pass_key = 'my_s3cr3t'
+    #this may or may not work
+    jwt_pass_key = ENV["JWT_secret"]
+    
   def encode_token(payload)
     JWT.encode(payload, jwt_pass_key)
   end

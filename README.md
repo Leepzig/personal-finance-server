@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Add Figaro and configure the config/application.yaml for the secret

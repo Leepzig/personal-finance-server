@@ -4,7 +4,10 @@ class Api::V1::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            render json:@user, status: :created
+            @token = encode_token(user_id: @user.id)
+            # why do we do User.Serializer.new? 
+            # render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+            render json:{user: @user, jwt: @token}, status: :created
         else
             render json: {errors: @user.errors.full_messages}, status: 422
         end
