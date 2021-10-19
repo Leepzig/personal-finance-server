@@ -4,6 +4,12 @@ Rails.application.routes.draw do
       resources :transactions, only: [:create, :update, :destroy]
       resources :budgets
       resources :users, only: [:create, :show]
+
+      #custom routes
+      post "/login", to: "auth#create"
+      get "/get-current-user", to: "users#get_current_user"
+      post "/signup", to: "users#create"
+      
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

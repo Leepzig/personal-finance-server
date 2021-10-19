@@ -24,3 +24,4 @@ Things you may want to cover:
 * ...
 
 Add Figaro and configure the config/application.yaml for the secret
+

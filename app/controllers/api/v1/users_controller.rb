@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create]
+    skip_before_action :authorized, only: [:create, :show]
 
     def create
         @user = User.new(user_params)
@@ -7,14 +7,14 @@ class Api::V1::UsersController < ApplicationController
             @token = encode_token(user_id: @user.id)
             # why do we do User.Serializer.new? 
             # render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
-            render json:{user: @user, jwt: @token}, status: :created
+            render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
         else
             render json: {errors: @user.errors.full_messages}, status: 422
         end
     end
 
     def show
-        user = User.find_by_id(:params[:id])
+        user = User.find_by_id(params[:id])
         if user
             render json: user
         else

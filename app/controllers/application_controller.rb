@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::API
     before_action :authorized
     #this may or may not work
-    jwt_pass_key = ENV["JWT_secret"]
+    # jwt_pass_key = ENV["JWT_secret"]
+    @jwt_pass_key = "JWT_secret"
     
   def encode_token(payload)
-    JWT.encode(payload, jwt_pass_key)
+    JWT.encode(payload, @jwt_pass_key)
   end
 
   def auth_header
@@ -16,7 +17,7 @@ class ApplicationController < ActionController::API
       token = auth_header.split(' ')[1]
       # headers: { 'Authorization': 'Bearer <token>' }
       begin
-        JWT.decode(token, jwt_pass_key, true, algorithm: 'HS256')
+        JWT.decode(token, @jwt_pass_key, true, algorithm: 'HS256')
         # JWT.decode => [{ "user_id"=>2 }, { "alg"=>"HS256" }]
       rescue JWT::DecodeError
         nil
