@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
       #custom routes
       post "/login", to: "auth#create"
-      get "/get-current-user", to: "users#get_current_user"
+      get "/get-current-user", to: "auth#get_current_user"
       post "/signup", to: "users#create"
       
     end

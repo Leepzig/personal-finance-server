@@ -2,7 +2,11 @@ class Api::V1::BudgetsController < ApplicationController
     before_action :find_budget, only: [:show, :update, :destroy]
 
     def index
-        render json: Budget.all, status: :ok
+        if params[:user_id]
+            budgets = Budget.all.where('user_id = ?', params[:user_id])
+            render json: budgets, status: :ok
+        else
+            render json: {errors: "no user id given"}
     end
 
     def show
