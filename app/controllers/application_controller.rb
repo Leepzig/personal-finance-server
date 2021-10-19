@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::API
     before_action :authorized
     #this may or may not work
-    # jwt_pass_key = ENV["JWT_secret"]
-    @jwt_pass_key = "JWT_secret"
+    @jwt_pass_key = ENV["JWT_secret"]
+    # @jwt_pass_key = "JWT_secret"
     
   def encode_token(payload)
     JWT.encode(payload, @jwt_pass_key)
