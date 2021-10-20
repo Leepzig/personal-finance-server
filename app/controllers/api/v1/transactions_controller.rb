@@ -2,7 +2,8 @@ class Api::V1::TransactionsController < ApplicationController
     before_action :find_transaction, only: [:delete, :update]
 
     def create
-        transaction = Transaction.new(transaction_params)
+        budget = Budget.find_by_id(params[:budget_id])
+        transaction = budget.transactions.new(transaction_params)
         if transaction.save
             render json: transaction, status: :created
         else
