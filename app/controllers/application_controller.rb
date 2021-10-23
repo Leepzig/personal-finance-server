@@ -15,6 +15,7 @@ class ApplicationController < ActionController::API
   def decoded_token
     if auth_header
       token = auth_header.split(' ')[1]
+      # binding.pry
       # headers: { 'Authorization': 'Bearer <token>' }
       begin
         # binding.pry

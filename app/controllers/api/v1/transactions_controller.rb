@@ -3,6 +3,7 @@ class Api::V1::TransactionsController < ApplicationController
 
     def create
         budget = Budget.find_by_id(params[:budget_id])
+        # binding.pry
         transaction = budget.transactions.new(transaction_params)
         if transaction.save
             render json: transaction, status: :created
@@ -16,7 +17,9 @@ class Api::V1::TransactionsController < ApplicationController
     end
 
     def update
+        # set up some error catching here a conditional or something
         @transaction.update(transaction_params)
+        # binding.pry
         render json: @transaction
     end
 
@@ -27,6 +30,6 @@ class Api::V1::TransactionsController < ApplicationController
         end
 
         def transaction_params
-            params.permit(:name, :budgeted, :actual, :transaction_type, :budget_id)
+            params.permit(:id, :name, :budgeted, :actual, :transaction_type, :budget_id)
         end
 end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       post "/login", to: "auth#create"
       get "/get-current-user", to: "auth#get_current_user"
       post "/signup", to: "users#create"
+      post "/budgets/:budget_id/transactions", to: "transactions#create"
+      post "/users/:id/budgets", to: "budgets#create"
       
     end
   end

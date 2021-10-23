@@ -8,6 +8,7 @@ class Api::V1::AuthController < ApplicationController
             #above we're authenticating the user
             #then below we're creating the token
             token = encode_token({user_id:@user.id})
+            # binding.pry
             #then sending the token back in a hash
             render json: {user: UserSerializer.new(@user), jwt: token}, status: :accepted
         else

@@ -18,7 +18,8 @@ class Api::V1::BudgetsController < ApplicationController
     end
 
     def create
-        budget = Budget.new(budget_params)
+        @user = User.find_by_id(params[:id])
+        budget = @user.budgets.new(budget_params)
         if budget.save
             render json: budget, status: :created
         else
