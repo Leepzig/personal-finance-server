@@ -7,6 +7,7 @@ class Api::V1::BudgetsController < ApplicationController
             render json: budgets, status: :ok
         else
             render json: {errors: "no user id given"}
+        end
     end
 
     def show
@@ -18,8 +19,9 @@ class Api::V1::BudgetsController < ApplicationController
     end
 
     def create
-        @user = User.find_by_id(params[:id])
+        @user = User.find_by_id(params[:user_id])
         budget = @user.budgets.new(budget_params)
+        # binding.pry
         if budget.save
             render json: budget, status: :created
         else
@@ -47,7 +49,7 @@ class Api::V1::BudgetsController < ApplicationController
 
     private
         def find_budget
-            @budget = Budget.find_by_id(params[:id])
+            @budget = Budget.find_by_id(params[:user_id])
         end
 
         def render_not_found

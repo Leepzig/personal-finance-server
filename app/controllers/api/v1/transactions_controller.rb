@@ -13,7 +13,14 @@ class Api::V1::TransactionsController < ApplicationController
     end
 #TODO fix the destroy
     def destroy
-        @transaction.destroy
+        find_transaction
+        if @transaction
+            # binding.pry
+            @transaction.destroy
+            render json: {message:"delete sucessfull"}
+        else
+            render json: {error: "Transaction not found, could not destroy unfound transaction"}, status: :not_found
+        end
     end
 
     def update

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get "/get-current-user", to: "auth#get_current_user"
       post "/signup", to: "users#create"
       post "/budgets/:budget_id/transactions", to: "transactions#create"
-      post "/users/:id/budgets", to: "budgets#create"
+      post "/users/:user_id/budgets", to: "budgets#create"
       
     end
   end

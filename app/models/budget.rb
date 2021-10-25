@@ -1,8 +1,7 @@
 class Budget < ApplicationRecord
   belongs_to :user
   has_many :transactions, dependent: :destroy
-  validates :actual, numericality: { only_integer: true }
-  validates :budgeted, numericality: { only_integer: true }
+
   #validate actual and budgeted must be integers
 
   def income
