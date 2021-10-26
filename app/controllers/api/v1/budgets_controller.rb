@@ -1,5 +1,6 @@
 class Api::V1::BudgetsController < ApplicationController
     before_action :find_budget, only: [:show, :update, :destroy]
+    skip_before_action :authorized
 
     def index
         if params[:user_id]

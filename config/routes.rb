@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       post "/signup", to: "users#create"
       post "/budgets/:budget_id/transactions", to: "transactions#create"
       post "/users/:user_id/budgets", to: "budgets#create"
+      get "/users/:user_id/budgets", to: "budgets#index"
       
     end
   end
