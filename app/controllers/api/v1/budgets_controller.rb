@@ -3,11 +3,11 @@ class Api::V1::BudgetsController < ApplicationController
     skip_before_action :authorized
 
     def index
-        if params[:user_id]
-            budgets = Budget.all.where('user_id = ?', params[:user_id])
-            render json: budgets, status: :ok
+        current_user
+        if @user
+            render json: @user.budgets, status: :ok
         else
-            render json: {errors: "no user id given"}
+            render json: {errors: "please login"}
         end
     end
 
