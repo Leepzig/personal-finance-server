@@ -1,6 +1,8 @@
 class Budget < ApplicationRecord
   belongs_to :user
   has_many :transactions, dependent: :destroy
+  validates_presence_of :header
+
 
   #validate actual and budgeted must be integers
 
