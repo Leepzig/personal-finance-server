@@ -1,27 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Personal Finance App
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+This application was created to help myself and others keep track of their personal finances, to allow people to make budget predictions and then record the actual occurences to compare the two. So that you can adjust your budget or behavior to meet your expectations for the next time.
 
-* System dependencies
+The user is able to input various expected income and expense rows in a table and then see totals in each column.  At the end of the month the user can see a comparison to how his actual spendings met or did not meet his expectations.
 
-* Configuration
+## Technologies
 
-* Database creation
+This project has a react front-end using redux to manage global state. It uses Material UI for styling.
 
-* Database initialization
+The backend is managed by Ruby On Rails.
 
-* How to run the test suite
+## Challenges
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-Add Figaro and configure the config/application.yaml for the secret
-
+The greatest challenge when making this project was allowing the server to update the front end in real time. There is a small delay due to state being updated, but a user is able to update a text box and those changes be reflected in the back end using an onBlur effect.
