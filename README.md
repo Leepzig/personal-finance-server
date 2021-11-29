@@ -8,6 +8,9 @@ This application was created to help myself and others keep track of their perso
 
 The user is able to input various expected income and expense rows in a table and then see totals in each column.  At the end of the month the user can see a comparison to how his actual spendings met or did not meet his expectations.
 
+To see a live version of the applpication go to https://damp-brushlands-95494.herokuapp.com/
+
+
 ## Technologies
 
 This project has a react front-end using redux to manage global state. It uses Material UI for styling.
